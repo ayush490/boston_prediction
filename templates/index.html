@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Boston Housing Price Prediction</title>
+    <style>
+        /* General reset and body styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f0ff, #d0eaff);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 40px 20px;
+        }
+
+        /* Page title */
+        .page-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a237e;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Container styling */
+        .container {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Form group layout */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Input styling */
+        input[type="text"] {
+            padding: 10px 15px;
+            border: 2px solid #90caf9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #1976d2;
+            box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.2);
+        }
+
+        /* Submit button styling */
+        input[type="submit"] {
+            background-color: #1976d2;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0d47a1;
+        }
+
+        /* Prediction result */
+        h3 {
+            margin-top: 30px;
+            font-size: 22px;
+            text-align: center;
+            color: #2e7d32;
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .page-title {
+                font-size: 24px;
+            }
+
+            input[type="submit"] {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 class="page-title">Boston Housing Price Prediction</h2>
+
+    <div class="container">
+        <form action="/predict" method="post">
+
+            <div class="form-group">
+                <label>CRIM:</label>
+                <input type="text" name="CRIM">
+            </div>
+
+            <div class="form-group">
+                <label>ZN:</label>
+                <input type="text" name="ZN">
+            </div>
+
+            <div class="form-group">
+                <label>INDUS:</label>
+                <input type="text" name="INDUS">
+            </div>
+
+            <div class="form-group">
+                <label>CHAS:</label>
+                <input type="text" name="CHAS">
+            </div>
+
+            <div class="form-group">
+                <label>NOX:</label>
+                <input type="text" name="NOX">
+            </div>
+
+            <div class="form-group">
+                <label>RM:</label>
+                <input type="text" name="RM">
+            </div>
+
+            <div class="form-group">
+                <label>AGE:</label>
+                <input type="text" name="AGE">
+            </div>
+
+            <div class="form-group">
+                <label>DIS:</label>
+                <input type="text" name="DIS">
+            </div>
+
+            <div class="form-group">
+                <label>RAD:</label>
+                <input type="text" name="RAD">
+            </div>
+
+            <div class="form-group">
+                <label>TAX:</label>
+                <input type="text" name="TAX">
+            </div>
+
+            <div class="form-group">
+                <label>PTRATIO:</label>
+                <input type="text" name="PTRATIO">
+            </div>
+
+            <div class="form-group">
+                <label>B:</label>
+                <input type="text" name="B">
+            </div>
+
+            <div class="form-group">
+                <label>LSTAT:</label>
+                <input type="text" name="LSTAT">
+            </div>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction_text %}
+        <h3>{{ prediction_text }}</h3>
+        {% endif %}
+    </div>
+
+</body>
+
+</html>
